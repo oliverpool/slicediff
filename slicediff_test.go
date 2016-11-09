@@ -1,9 +1,34 @@
 package slicediff
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
+
+func Example() {
+	// Create a new SliceDiff
+	sd := New()
+
+	// Add some initial elements
+	sd.Append([]string{
+		"a",
+		"b",
+		"d",
+	})
+
+	// Perform an update
+	update := []string{
+		"a",
+		"b",
+		"c",
+	}
+	add, del := sd.SortedDiff(update)
+
+	// Get the diff
+	fmt.Println(add, del)
+	// Output: [c] [d]
+}
 
 var emptySlice = make([]string, 0)
 

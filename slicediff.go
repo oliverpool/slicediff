@@ -1,3 +1,6 @@
+// Package slicediff is a utility to determine the additions and deletions that happened to a sorted slice after each update.
+//
+// All the slices are assumed to be sorted!
 package slicediff
 
 import "container/list"
