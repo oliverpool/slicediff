@@ -68,5 +68,5 @@ func (sd *SliceDiff) SortedDiff(updated []string) (additions, deletions []string
 func removeAndGetNext(l *list.List, e *list.Element) (next *list.Element) {
 	next = e.Next()
 	l.Remove(e)
-	return
+	return next
 }
