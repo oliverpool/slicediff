@@ -32,8 +32,8 @@ func (sd *SliceDiff) Append(sa []string) {
 func (sd *SliceDiff) SortedDiff(updated []string) (additions, deletions []string) {
 	e := sd.l.Front()
 
-	additions = make([]string, 0)
-	deletions = make([]string, 0)
+	additions = make([]string, 0, len(updated))
+	deletions = make([]string, 0, sd.l.Len())
 
 	for _, s := range updated {
 		// Delete the small elements at the beginning of the list
