@@ -30,13 +30,6 @@ func (sd *SliceDiff) Append(sa []string) {
 //
 // updated is assumed to be sorted
 func (sd *SliceDiff) SortedDiff(updated []string) (additions []string, deletions []string) {
-	if sd.l.Len() == 0 {
-		sd.Append(updated)
-		additions = make([]string, len(updated))
-		copy(additions, updated)
-		return additions, make([]string, 0)
-	}
-
 	e := sd.l.Front()
 
 	additions = make([]string, 0)
