@@ -29,7 +29,7 @@ func (sd *SliceDiff) Append(sa []string) {
 // SortedDiff compares the updated slice with l and returns the additions and deletions performed
 //
 // updated is assumed to be sorted
-func (sd *SliceDiff) SortedDiff(updated []string) (additions []string, deletions []string) {
+func (sd *SliceDiff) SortedDiff(updated []string) (additions, deletions []string) {
 	e := sd.l.Front()
 
 	additions = make([]string, 0)
