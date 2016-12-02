@@ -39,7 +39,7 @@ func (sd *SliceDiff) SortedDiff(updated []string) (additions, deletions []string
 		// Delete the small elements at the beginning of the list
 		for e != nil && e.Value.(string) < s {
 			deletions = append(deletions, e.Value.(string))
-			e = removeAndGetNext(sd.s, e)
+			e = sd.removeAndGetNext(e)
 		}
 
 		if e == nil {
@@ -59,14 +59,14 @@ func (sd *SliceDiff) SortedDiff(updated []string) (additions, deletions []string
 	// delete end of the list
 	for e != nil {
 		deletions = append(deletions, e.Value.(string))
-		e = removeAndGetNext(sd.s, e)
+		e = sd.removeAndGetNext(e)
 	}
 
 	return additions, deletions
 }
 
-func removeAndGetNext(l *list.List, e *list.Element) (next *list.Element) {
+func (sd *SliceDiff) removeAndGetNext(e *list.Element) (next *list.Element) {
 	next = e.Next()
-	l.Remove(e)
+	sd.s.Remove(e)
 	return next
 }
